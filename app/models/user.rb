@@ -12,4 +12,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :username
   mount_uploader :avatar, AvatarUploader
 
+  has_many :reviews
+  has_many :books, :through => :reviews
+
 end
