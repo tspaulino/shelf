@@ -24,12 +24,15 @@ group :assets do
 
 end
 
+gem 'devise'
+gem 'carrierwave'
 gem 'haml-rails'
 gem 'inherited_resources'
 gem 'jquery-rails'
+gem 'rmagick'
 gem 'simple_form'
 
-gem 'devise'
+
 
 group :development, :test do
   # Pretty printed test output

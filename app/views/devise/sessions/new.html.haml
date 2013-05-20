@@ -1,0 +1,10 @@
+= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-horizontal' }) do |f|
+  = f.error_notification
+  %legend Sign In
+  .form-inputs
+    = f.input :email, :required => true
+    = f.input :password, :required => true
+    = f.input :remember_me, :as => :boolean if devise_mapping.rememberable?
+    = f.button :submit, "Sign In"
+
+= render "devise/shared/links"

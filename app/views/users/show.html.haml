@@ -1,0 +1,11 @@
+.row-fluid
+  .span2
+    = image_tag @user.avatar.url, :class => "img-polaroid", :alt => @user.username
+  .span9
+    %h1
+      = @user.name
+      - if @user.username.present?
+        (#{@user.username})
+    = link_to 'Edit', edit_user_path(@user)
+    %p= @user.email
+

@@ -1,0 +1,11 @@
+= simple_form_for(current_user, :url => user_path(current_user), :html => {:class => 'form-horizontal' }) do |f|
+  = f.error_notification
+  %legend Edit Profile
+  .form-inputs
+    = f.input :name, :required => true, :autofocus => true
+    = f.input :username, :required => true
+    = f.input :email, :required => true
+    = f.input :avatar, :as => :file
+
+  .form-actions
+    = f.button :submit, "Update"

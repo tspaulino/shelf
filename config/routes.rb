@@ -1,5 +1,6 @@
 Shelf::Application.routes.draw do
   devise_for :users
+  resources :users, path: "profiles", :only => [:show, :edit, :update, :destroy]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -57,4 +58,6 @@ Shelf::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
+  match 'pages/dashboard' => "pages#dashboard"
+  root to: 'pages#dashboard'
 end
