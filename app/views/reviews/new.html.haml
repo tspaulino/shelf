@@ -1,0 +1,22 @@
+= simple_form_for @review, :html => { :class => 'form-horizontal' } do |f|
+  = f.error_notification
+  .span6
+    %legend New Review
+    %fieldset
+      = f.simple_fields_for :book do |b|
+        = b.input :title
+        = b.input :isbn_number
+      = f.label :rate
+      .controls
+        %label
+          #rating
+            - 5.times do |value|
+              = radio_button_tag 'review[rate]', 'rate', false, :class => "rating", :value => (value + 1)
+    .form-actions
+      = f.button :submit, :class => 'btn-primary'
+
+= content_for :custom_javascript do
+  :javascript
+      jQuery(document).ready(function(){
+        jQuery("#rating").rating();
+      })

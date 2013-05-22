@@ -5,6 +5,6 @@
     = f.input :email, :required => true
     = f.input :password, :required => true
     = f.input :remember_me, :as => :boolean if devise_mapping.rememberable?
-    = f.button :submit, "Sign In"
+    = f.button :submit, "Sign In", :class => 'btn-primary'
 
 = render "devise/shared/links"

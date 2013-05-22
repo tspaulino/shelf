@@ -1,0 +1,11 @@
+jQuery("#flash_messages").html("#{escape_javascript(bootstrap_flash)}");
+if (jQuery("#review-#{@review.id}").length > 0){
+jQuery("#review-#{@review.id}").replaceWith("#{escape_javascript(render :partial => 'books/review', :locals => {:review => @review})}");
+}else{
+jQuery("#readers-table").append("#{escape_javascript(render :partial => 'books/review', :locals => {:review => @review})}");
+jQuery("#star-rating").replaceWith("#{escape_javascript(render :partial => 'books/review_form', :locals => {:review => @review})}");
+jQuery("#star-rating").rating(function(vote, event){
+review_id = "#{@review.id}";
+rateReview(review_id, vote);
+});
+}

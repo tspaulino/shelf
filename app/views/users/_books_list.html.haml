@@ -1,0 +1,11 @@
+%legend #{@user.reviews.count} books
+%table.table.table-striped
+  %th Title
+  %th Rate
+  %tbody
+    - @user.reviews.each do |review|
+      %tr
+        %td= link_to review.book.title, book_path(review.book)
+        %td
+          - review.rate.times do |star|
+            %i{:class => "icon-star"}

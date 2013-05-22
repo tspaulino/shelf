@@ -1,0 +1,38 @@
+.well
+  - if user_signed_in?
+    = render :partial => "review_form", :locals => {:review => @book.reviews.find_by_user_id(current_user.id)}
+  .page-header
+    %h1
+      = @book.title
+  %p
+    %strong= 'ISBN Number'
+    = @book.isbn_number
+%legend Readers
+%table.table.table-striped#readers-table
+  %th Name
+  %th Rate
+  - @book.reviews.each do |review|
+    %tr{:id => "review-#{review.id}"}
+      %td= link_to review.user.name, user_path(review.user)
+      %td
+        - review.rate.times do |star|
+          %i{:class => "icon-star"}
+
+= content_for :custom_javascript do
+  - unless user_signed_in? and current_user.books.include?(@book)
+    :javascript
+      jQuery(document).ready(function(){
+        jQuery("#star-rating").rating(function(vote, event){
+          book_id = "#{@book.id}";
+          createReview(book_id, vote);
+        })
+      })
+  - else
+    :javascript
+      jQuery(document).ready(function(){
+        jQuery("#star-rating").rating(function(vote, event){
+          review_id = "#{@book.reviews.find_by_user_id(current_user.id).id}";
+          rateReview(review_id, vote);
+        })
+      });
+

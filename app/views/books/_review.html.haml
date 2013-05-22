@@ -1,0 +1,5 @@
+%tr{:id => "review-#{review.id}"}
+  %td= link_to review.user.name, user_path(review.user)
+  %td
+    - review.rate.times do |star|
+      %i{:class => "icon-star"}

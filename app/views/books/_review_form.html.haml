@@ -1,0 +1,4 @@
+#star-rating.pull-right
+  - 5.times do |value|
+    - marked = (value + 1 == review.try(:rate))
+    = radio_button_tag 'review', 'rate', marked, :class => "rating", :value => (value + 1)

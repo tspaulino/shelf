@@ -1,0 +1,8 @@
+.nav.pull-left
+  %li
+    %a{:href => new_review_path } #{content_tag(:i, "", :class => "icon-plus")} Add Book
+%ul.nav.pull-right
+  %li
+    = link_to current_user.name, user_path(current_user)
+  %li
+    = link_to 'Logout', destroy_user_session_path, :method => :delete

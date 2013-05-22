@@ -4,12 +4,8 @@ describe UsersController do
 
   let(:valid_attributes) { {:name => "Testing", :username => "testing", :email => "test@domain.com", :password => "testing123", :password_confirmation => "testing123" } }
 
-
-  include Devise::TestHelpers
-
   before (:each) do
     @user = User.create! valid_attributes
-    sign_in @user
   end
 
   describe "GET show" do
