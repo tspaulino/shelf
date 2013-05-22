@@ -1,0 +1,8 @@
+.container.nav-collapse.pull-left
+  %ul.nav
+    %li= link_to 'Users', admin_users_path
+    %li= link_to "Books", admin_books_path
+    %li= link_to "Reviews", admin_reviews_path
+.container.nav-collapse.pull-right
+  %ul.nav
+    %li= link_to 'Logout', destroy_admin_session_path, :method => :delete
