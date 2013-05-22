@@ -4,6 +4,14 @@ Shelf::Application.routes.draw do
   resources :books, :only => [:index, :show]
   resources :reviews, :only => [:new, :create, :update]
 
+
+  devise_for :admins
+  namespace :admin do
+    resources :books
+    resources :users
+    resources :reviews
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

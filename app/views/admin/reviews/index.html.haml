@@ -1,0 +1,25 @@
+- model_class = Review
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.pluralize
+%table.table.table-striped
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:user)
+      %th= model_class.human_attribute_name(:rate)
+      %th= model_class.human_attribute_name(:book)
+      %th=t '.actions', :default => t("helpers.actions")
+  %tbody
+    - @reviews.each do |review|
+      %tr
+        %td= link_to review.id, admin_review_path(review)
+        %td= link_to review.user.name, admin_user_path(review.user)
+        %td
+          - review.rate.times do |value|
+            %i{:class => "icon-star"}
+        %td= link_to review.book.title, admin_book_path(review.book)
+        %td
+          = link_to t('.edit', :default => t("helpers.links.edit")), edit_admin_review_path(review), :class => 'btn btn-mini'
+          = link_to t('.destroy', :default => t("helpers.links.destroy")), admin_review_path(review), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+
+= link_to t('.new', :default => t("helpers.links.new")), new_admin_review_path, :class => 'btn btn-primary'
