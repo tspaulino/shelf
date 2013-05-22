@@ -24,6 +24,7 @@ group :assets do
 
 end
 
+gem 'bootstrap-will_paginate', :git => 'git://github.com/yrgoldteeth/bootstrap-will_paginate.git'
 gem 'devise'
 gem 'carrierwave'
 gem 'haml-rails'

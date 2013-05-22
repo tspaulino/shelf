@@ -8,3 +8,4 @@
           %img{:data => {:src => "holder.js/160x160"}, :alt => ""}
           %p= link_to book.title, book_path(book)
           %small #{book.reviews.count} readers
+= will_paginate @books
